@@ -1,0 +1,59 @@
+{
+  "name": "markfuse",
+  "version": "0.1.0",
+  "description": "High-fidelity document-to-Markdown conversion for AI workflows and Markdown note apps.",
+  "license": "MIT",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "bin": {
+    "markfuse": "bin/markfuse.js"
+  },
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "LICENSE",
+    "README.md",
+    "README.zh-CN.md"
+  ],
+  "scripts": {
+    "start": "node bin/markfuse.js",
+    "test": "node --test",
+    "test:unit": "node --test test/unit",
+    "test:api": "node --test test/unit/api.test.js",
+    "test:cli": "node --test test/unit/cli-args.test.js",
+    "prepublishOnly": "npm test"
+  },
+  "keywords": [
+    "markdown",
+    "converter",
+    "pdf",
+    "docx",
+    "doc",
+    "rag",
+    "knowledge-base",
+    "markfuse"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blestvann/markfuse.git"
+  },
+  "bugs": {
+    "url": "https://github.com/blestvann/markfuse/issues"
+  },
+  "author": "blestvann <blestvann@gmail.com>",
+  "homepage": "https://github.com/blestvann/markfuse#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "mammoth": "^1.11.0",
+    "pdfjs-dist": "^5.4.624",
+    "word-extractor": "^1.0.4"
+  },
+  "optionalDependencies": {
+    "sharp": "^0.34.5"
+  }
+}

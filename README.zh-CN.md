@@ -36,19 +36,17 @@ MarkFuse 的重点是保留结构。
 - 可直接用于 Markdown 笔记应用，支持个人与团队知识管理
 - 提供可扩展的插件化架构，以支持更多格式与 OCR 后端
 
-## 计划支持的格式
+## 格式支持（v0.1.0）
 
 - PDF
 - DOCX
-- DOC
-- XLSX
-- 图片与扫描文档 OCR
+- DOC（纯文本降级提取）
 
 ## 当前状态
 
-MarkFuse 目前处于早期开发阶段。
+MarkFuse `v0.1.0` 已可用，作为首个开源基线版本。
 
-首个公开版本将聚焦核心文档格式的高质量 Markdown 转换，OCR 与更多高级格式支持将逐步加入。
+当前重点是核心文档格式的稳定转换质量，OCR 与更多高级格式能力将逐步加入。
 
 ## 设计理念
 
@@ -58,18 +56,61 @@ MarkFuse 以 AI 为核心，但不依赖 AI 才能工作。
 
 ## 安装
 
-即将提供。
+环境要求：
 
-## CLI
+- Node.js 18 或更高版本
 
-即将提供。
-
-预期用法：
+通过 GitHub 全局安装：
 
 ```bash
+npm install -g git+https://github.com/blestvann/markfuse.git
+```
+
+从源码安装：
+
+```bash
+git clone https://github.com/blestvann/markfuse.git
+cd markfuse
+npm install
+npm link
+```
+
+安装验证：
+
+```bash
+markfuse --help
+markfuse --version
+```
+
+## 使用
+
+### CLI
+
+```bash
+markfuse file.pdf
 markfuse convert file.pdf
-markfuse convert report.docx
-markfuse convert sheet.xlsx
+markfuse convert report.docx -o report.md
+markfuse convert legacy.doc -o legacy.md
+markfuse formats
+markfuse doctor
+```
+
+`markfuse <输入文件>` 是 `markfuse convert <输入文件>` 的简写。
+
+若从源码运行且未执行 `npm link`，可直接运行：
+
+```bash
+node bin/markfuse.js file.pdf
+node bin/markfuse.js convert file.pdf
+```
+
+### API
+
+```js
+const markfuse = require('markfuse');
+
+const result = await markfuse.convert('input.pdf', 'output.md');
+console.log(result.outputPath);
 ```
 
 ## 网站

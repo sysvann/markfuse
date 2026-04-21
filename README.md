@@ -36,19 +36,18 @@ The goal is not just Markdown output, but Markdown that is actually usable in AI
 - Be directly usable in Markdown note apps for personal and team knowledge management
 - Provide an extensible plugin-based architecture for more formats and OCR backends
 
-## Planned Format Support
+## Format Support (v0.1.0)
 
 - PDF
 - DOCX
-- DOC
-- XLSX
-- OCR for images and scanned documents
+- DOC (plain-text fallback)
 
 ## Status
 
-MarkFuse is in early development.
+MarkFuse `v0.1.0` is available as the first open-source baseline.
 
-The first public version will focus on high-quality Markdown conversion for core document formats, with OCR and more advanced format support added incrementally.
+Current focus is stable conversion quality for core document formats.
+OCR and more advanced format support will be added incrementally.
 
 ## Philosophy
 
@@ -58,18 +57,61 @@ It aims to produce deterministic, structured Markdown that works well before any
 
 ## Installation
 
-Coming soon.
+Requirements:
 
-## CLI
+- Node.js 18 or later
 
-Coming soon.
-
-Expected usage:
+Install globally from GitHub:
 
 ```bash
+npm install -g git+https://github.com/blestvann/markfuse.git
+```
+
+Install from source:
+
+```bash
+git clone https://github.com/blestvann/markfuse.git
+cd markfuse
+npm install
+npm link
+```
+
+Verify installation:
+
+```bash
+markfuse --help
+markfuse --version
+```
+
+## Usage
+
+### CLI
+
+```bash
+markfuse file.pdf
 markfuse convert file.pdf
-markfuse convert report.docx
-markfuse convert sheet.xlsx
+markfuse convert report.docx -o report.md
+markfuse convert legacy.doc -o legacy.md
+markfuse formats
+markfuse doctor
+```
+
+`markfuse <input-file>` is shorthand for `markfuse convert <input-file>`.
+
+If you run from source without `npm link`:
+
+```bash
+node bin/markfuse.js file.pdf
+node bin/markfuse.js convert file.pdf
+```
+
+### API
+
+```js
+const markfuse = require('markfuse');
+
+const result = await markfuse.convert('input.pdf', 'output.md');
+console.log(result.outputPath);
 ```
 
 ## Website

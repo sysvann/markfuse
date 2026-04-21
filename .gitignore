@@ -1,0 +1,9 @@
+AGENTS.md
+node_modules/
+dist/
+coverage/
+assets/
+.tmp/
+*.log
+.DS_Store
+Thumbs.db
