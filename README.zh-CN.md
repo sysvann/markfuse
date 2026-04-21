@@ -60,10 +60,10 @@ MarkFuse 以 AI 为核心，但不依赖 AI 才能工作。
 
 - Node.js 18 或更高版本
 
-通过 GitHub 全局安装：
+通过 npm 安装：
 
 ```bash
-npm install -g git+https://github.com/blestvann/markfuse.git
+npm install -g markfuse
 ```
 
 从源码安装：

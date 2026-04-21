@@ -61,10 +61,10 @@ Requirements:
 
 - Node.js 18 or later
 
-Install globally from GitHub:
+Install from npm:
 
 ```bash
-npm install -g git+https://github.com/blestvann/markfuse.git
+npm install -g markfuse
 ```
 
 Install from source:
